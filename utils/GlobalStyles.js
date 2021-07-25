@@ -2,11 +2,11 @@ import {StyleSheet} from 'react-native';
 import Colors from '../constants/Colors';
 
 const styles = StyleSheet.create({
-    textInfo: {
-        color: Colors.black,
+    Title: {
         fontFamily: 'SFPro-Bold',
-        fontSize: 16,
-    },
+        fontSize: 24,
+        color: Colors.text
+    }
 })
 
 export default styles;
