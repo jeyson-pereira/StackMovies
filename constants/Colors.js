@@ -1,10 +1,7 @@
 const Colors = {
-  background: '#ffffff',
-  border: '#393941',
-  card: '#181818',
-  notification: 'rgb(255, 69, 58)',
-  primary: 'rgb(10, 132, 255)',
-  text: '#000000',
+  bg: '#0F2027',
+  bgGradient: '#2C5364',
+  text: '#ffffff',
 };
 
 export default Colors;
