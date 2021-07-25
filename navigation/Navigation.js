@@ -7,8 +7,6 @@ import Colors from '../constants/Colors';
 //Import Screens
 import Home from '../screens/Home';
 import Movie from '../screens/Movie';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 
 const mainTheme = {
     ...DefaultTheme,
@@ -21,15 +19,13 @@ const mainTheme = {
 //Export App Nav Container
 export default function Navigation() {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <LinearGradient
-                colors={[Colors.bg, Colors.bgGradient]}
-                style={{ flex: 1 }}>
-                <NavigationContainer theme={mainTheme}>
-                    <RootNavigator />
-                </NavigationContainer>
-            </LinearGradient>
-        </SafeAreaView>
+        <LinearGradient
+            colors={[Colors.bg, Colors.bgGradient]}
+            style={{ flex: 1 }}>
+            <NavigationContainer theme={mainTheme}>
+                <RootNavigator />
+            </NavigationContainer>
+        </LinearGradient>
     )
 }
 
