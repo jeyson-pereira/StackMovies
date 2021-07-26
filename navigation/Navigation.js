@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 //Import Screens
 import Home from '../screens/Home';
 import Movie from '../screens/Movie';
+import Cinema from '../screens/Cinema';
 
 const mainTheme = {
     ...DefaultTheme,
@@ -36,10 +37,11 @@ function RootNavigator() {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
-            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid,
         }}>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Movie" component={Movie} />
+            <Stack.Screen name="Cinema" component={Cinema} />
         </Stack.Navigator>
     );
 }
