@@ -13,20 +13,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     goBack: {
-        marginLeft: 10,
+        margin: 16,
         width: 36
     },
 });
 
 const movie = StyleSheet.create({
     posterImage: {
-        width: 100,
+        width: 120,
         height: 200,
         resizeMode: 'cover',
         borderRadius: 24,
         margin: 0,
     },
     title: {
+        marginTop: 10,
+        marginHorizontal: 20,
         fontFamily: 'SFPro-Bold',
         fontSize: 28,
         color: Colors.text,
@@ -36,40 +38,62 @@ const movie = StyleSheet.create({
         alignSelf: 'flex-start',
         color: Colors.text,
         fontFamily: 'SFPro-Bold',
-        fontSize: 20,
+        fontSize: 18,
         textTransform: 'capitalize'
     },
     release_date:{
         alignSelf: 'flex-start',
         color: Colors.text,
-        fontFamily: 'SFPro-Medium',
-        textTransform: 'uppercase'
+        fontFamily: 'SFPro-Bold',
+        fontSize: 16,
     },
     overview:{
+        alignSelf: 'flex-start',
         fontFamily: 'SFPro-Regular',
         fontSize: 14,
         color: Colors.text,
         textAlign: 'justify',
         marginTop: 10,
     },
-    scheduleBtn: {
+    btnsWrapper:{
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center',
         marginBottom: 10,
+        marginHorizontal: 20,
+    },
+    btn:{
+        width: '50%',
         padding: 10,
-        width: '90%',
-        backgroundColor: Colors.btn,
-        borderRadius: 15,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
         elevation: 2,
         shadowColor: 'black',
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10,
     },
+    trailerBtn: {
+        backgroundColor: Colors.btnTrailer,
+        borderBottomLeftRadius: 15,
+        borderTopLeftRadius: 15
+    },
+    scheduleBtn: {
+        backgroundColor: Colors.btnSchedule,
+        borderTopRightRadius: 15,
+        borderBottomRightRadius: 15
+    },
+    icon: {
+        textShadowColor: 'black',
+        textShadowRadius: 5,
+        textShadowOffset: { width: 0, height: 1 },
+        color: Colors.text,
+    },
     btnText: {
         color: Colors.text,
         fontFamily: 'SFPro-Bold',
+        marginLeft: 4,
         fontSize: 16,
         textShadowColor: 'black',
         textShadowRadius: 10,
