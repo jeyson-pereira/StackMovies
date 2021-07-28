@@ -8,6 +8,7 @@ import Colors from '../constants/Colors';
 import Home from '../screens/Home';
 import Movie from '../screens/Movie';
 import Cinema from '../screens/Cinema';
+import Trailer from '../screens/Trailer';
 
 const mainTheme = {
     ...DefaultTheme,
@@ -42,6 +43,7 @@ function RootNavigator() {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Movie" component={Movie} />
             <Stack.Screen name="Cinema" component={Cinema} />
+            <Stack.Screen name="Trailer" component={Trailer} />
         </Stack.Navigator>
     );
 }
