@@ -38,7 +38,7 @@ function RootNavigator() {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
-            cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid,
+            cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
         }}>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Movie" component={Movie} />
