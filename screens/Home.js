@@ -12,10 +12,6 @@ const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const SPACING = 10;
 
-// Android Banner: ca-app-pub-7227740623234860/6467936622
-// iOS Banner: ca-app-pub-7227740623234860/8080401196
-
-
 const Loading = () => (
     <View style={styles.loadingContainer}>
         <ActivityIndicator color='white' size='large' />
@@ -53,10 +49,8 @@ export default function Home({ navigation }) {
     }
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                <Image source={require(`../assets/cinema.png`)}
-                    style={{ width: 60, height: 60 }} />
-                <Text style={styles.Header}>Cines-App</Text>
+            <View style={{ justifyContent: 'center', alignItems: 'center', margin: 20 }}>
+                <Text style={styles.Header}>cines-app</Text>
             </View>
             <Animated.FlatList
                 data={movies}
@@ -124,13 +118,14 @@ export default function Home({ navigation }) {
                 }
                 }
             />
-            <AdMobBanner
-                bannerSize="banner"
-                adUnitID={bannerAdId} // Test ID, Replace with your-admob-unit-id
-                servePersonalizedAds={false} // true or false
-                didFailToReceiveAdWithError={bannerError}
-                style={{ alignSelf: 'center' }}
-            />
+            <View style={styles.banner}>
+                <AdMobBanner
+                    bannerSize="banner"
+                    adUnitID={bannerAdId} // Test ID, Replace with your-admob-unit-id
+                    servePersonalizedAds={false} // true or false
+                    didFailToReceiveAdWithError={bannerError}
+                />
+            </View>
         </SafeAreaView>
     )
 }
@@ -143,6 +138,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    banner:{
+        width:'100%',
+        justifyContent: "center",
+        alignItems: "center",
     },
     paragraph: {
         margin: 24,
@@ -162,20 +162,21 @@ const styles = StyleSheet.create({
     infoContainer: {
         justifyContent: 'center',
         borderRadius: 25,
-        backgroundColor: Colors.btn,
+        backgroundColor: Colors.btnMain,
         width: '100%',
         elevation: 2,
         shadowColor: 'black',
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10,
-        padding: 5,
+        padding: 4,
     },
     Title: {
         fontFamily: 'SFPro-Bold',
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.text,
+        margin: 2,
     },
     Header: {
         fontFamily: 'SFPro-Bold',
