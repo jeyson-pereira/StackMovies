@@ -1,27 +1,20 @@
-import * as React from 'react';
-import { StyleSheet, Text, View, Image, Animated, Platform, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Text, View, Image, Animated, Platform, Dimensions, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AdMobBanner } from 'expo-ads-admob';
-
+import { getMovies } from '../api';
+import Loading from '../components/Loading';
 import Colors from '../constants/Colors';
-import Data from '../static/data.json'
-const imgAPI = 'https://image.tmdb.org/t/p/original'
+import gStyles from '../utils/GlobalStyles';
 
 const width = Dimensions.get('window').width;
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const SPACING = 10;
 
-const Loading = () => (
-    <View style={styles.loadingContainer}>
-        <ActivityIndicator color='white' size='large' />
-        <Text style={styles.paragraph}>Cargando...</Text>
-    </View>
-);
-
-export default function Home({ navigation }) {
-    const scrollX = React.useRef(new Animated.Value(0)).current;
-    const [movies, setMovies] = React.useState([]);
+export default Home = ({ navigation }) => {
+    const scrollX = useRef(new Animated.Value(0)).current;
+    const [movies, setMovies] = useState([]);
 
     const bannerAdId = (
         Platform.OS === 'ios' ? 'ca-app-pub-3940256099942544/2934735716' :
@@ -32,9 +25,9 @@ export default function Home({ navigation }) {
         return;
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
-            const movies = Data.results;
+            const movies = await getMovies();
             // [empty_item, ...movies, empty_item]
             setMovies([{ id: 'empty-left' }, ...movies, { id: 'empty-right' }]);
         };
@@ -48,9 +41,15 @@ export default function Home({ navigation }) {
         return <Loading />;
     }
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={{ justifyContent: 'center', alignItems: 'center', margin: 20 }}>
-                <Text style={styles.Header}>cines-app</Text>
+                <Text style={{
+                    fontFamily: 'SFPro-Bold',
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: Colors.text,
+                    marginHorizontal: 10
+                }}>cines-app</Text>
             </View>
             <Animated.FlatList
                 data={movies}
@@ -69,7 +68,7 @@ export default function Home({ navigation }) {
                 )}
                 scrollEventThrottle={16}
                 renderItem={({ item, index }) => {
-                    if (!item.poster_path) {
+                    if (!item.cover) {
                         return <View style={{ width: EMPTY_ITEM_SIZE }} />;
                     }
 
@@ -85,8 +84,6 @@ export default function Home({ navigation }) {
                         extrapolate: 'clamp',
                     });
 
-                    const poster = `${imgAPI}${item.poster_path}`;
-
                     return (
                         <View style={{ width: ITEM_SIZE }}>
                             <Animated.View
@@ -95,30 +92,28 @@ export default function Home({ navigation }) {
                                     padding: SPACING,
                                     alignItems: 'center',
                                     backgroundColor: 'white',
-                                    borderRadius: 34,
+                                    borderRadius: 30,
                                     transform: [{ translateY }],
                                 }}
                             >
                                 <Image source={{
-                                    uri: `${poster}`
+                                    uri: `${item.cover}`
                                 }}
-                                    style={styles.posterImage}
+                                    style={[gStyles.home.posterImage, { height: ITEM_SIZE * 1.2 }]}
                                 />
                                 <TouchableOpacity onPress={() => navigation.navigate('Movie', {
-                                    item: item,
-                                    item_poster: poster,
+                                    movie: item,
                                 })}
-                                    style={styles.infoContainer}
+                                    style={gStyles.home.infoContainer}
                                 >
-                                    <Text style={styles.Title}>{item.title}</Text>
+                                    <Text style={gStyles.home.Title}>{item.title}</Text>
                                 </TouchableOpacity>
                             </Animated.View>
                         </View>
                     )
-                }
-                }
+                }}
             />
-            <View style={styles.banner}>
+            <View style={gStyles.styles.banner}>
                 <AdMobBanner
                     bannerSize="banner"
                     adUnitID={bannerAdId} // Test ID, Replace with your-admob-unit-id
@@ -129,61 +124,3 @@ export default function Home({ navigation }) {
         </SafeAreaView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    loadingContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    banner:{
-        width:'100%',
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    paragraph: {
-        margin: 24,
-        fontSize: 18,
-        fontFamily: 'SFPro-Medium',
-        textAlign: 'center',
-        color: 'white'
-    },
-    posterImage: {
-        width: '100%',
-        height: ITEM_SIZE * 1.2,
-        resizeMode: 'cover',
-        borderRadius: 24,
-        margin: 0,
-        marginBottom: 10,
-    },
-    infoContainer: {
-        justifyContent: 'center',
-        borderRadius: 25,
-        backgroundColor: Colors.btnMain,
-        width: '100%',
-        elevation: 2,
-        shadowColor: 'black',
-        shadowOpacity: 0.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 10,
-        padding: 4,
-    },
-    Title: {
-        fontFamily: 'SFPro-Bold',
-        textAlign: 'center',
-        fontSize: 16,
-        color: Colors.text,
-        margin: 2,
-    },
-    Header: {
-        fontFamily: 'SFPro-Bold',
-        textAlign: 'center',
-        fontSize: 30,
-        color: Colors.text,
-        marginHorizontal: 10,
-    }
-})
-
