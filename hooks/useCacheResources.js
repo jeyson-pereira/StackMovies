@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import {useEffect, useState} from 'react';
@@ -14,7 +13,6 @@ export default function useCachedResources() {
 
         // Load fonts
         await Font.loadAsync({
-          ...Ionicons.font,
           'SFPro-Regular': require('../assets/fonts/SF-Pro-Display-Regular.otf'),
           'SFPro-Light': require('../assets/fonts/SF-Pro-Display-Light.otf'),
           'SFPro-Medium': require('../assets/fonts/SF-Pro-Display-Medium.otf'),
