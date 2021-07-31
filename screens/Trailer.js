@@ -1,20 +1,20 @@
-import React, { useState, useCallback } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { Ionicons } from '@expo/vector-icons';
 import gStyles from '../utils/GlobalStyles';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function Trailer({ navigation, route }) {
     const trailer_id = route.params.trailer_id;
-    const [playing, setPlaying] = useState(false);
+    //Function change Orientation to Landscape and hide StatusBar on fullscreen video
+    const changeOrientation = (value) => {
+        value ? ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE) :
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+        StatusBar.setHidden(value)
+    }
 
-    const onStateChange = useCallback((state) => {
-        if (state === "ended") {
-            setPlaying(false);
-            Alert.alert("video has finished playing!");
-        }
-    }, []);
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
             <View>
@@ -24,13 +24,12 @@ export default function Trailer({ navigation, route }) {
                     <Ionicons name='close' size={36} color='white' />
                 </TouchableOpacity>
             </View>
-            <View style={{flex:1, justifyContent: 'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
                 <YoutubePlayer
                     height={300}
-                    play={playing}
                     videoId={trailer_id}
-                    onChangeState={onStateChange}
                     style={{ backgroundColor: 'black' }}
+                    onFullScreenChange={(value) => changeOrientation(value)}
                 />
             </View>
         </SafeAreaView>
