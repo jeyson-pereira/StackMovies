@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     },
     banner: {
         width: '100%',
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: 'flex-end',
+        alignItems: 'center'
     }
 });
 
@@ -49,7 +49,8 @@ const home = StyleSheet.create({
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10,
-        padding: 4
+        paddingVertical: 8,
+        paddingHorizontal: 4
     },
     Title: {
         fontFamily: 'SFPro-Bold',
@@ -160,15 +161,13 @@ const cinema = StyleSheet.create({
         textAlign: 'center'
     },
     Picker: {
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 5,
-        padding: 10,
         alignSelf: 'center',
-        width: '80%'
+        marginHorizontal: 20
     },
     noSchedules: {
+        flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         marginHorizontal: 20,
         marginVertical: 20,
         borderWidth: 1,
@@ -195,9 +194,9 @@ const cinema = StyleSheet.create({
         fontFamily: 'SFPro-Medium',
         color: Colors.text
     },
-    formatWrapper: {
+    itemInfoWrapper: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     format: {
         marginLeft: 4,
@@ -212,8 +211,7 @@ const cinema = StyleSheet.create({
         padding: 5,
         backgroundColor: Colors.text,
         borderRadius: 10,
-        marginVertical: 5,
-        marginRight: 10
+        margin: 5
     },
     schedule: {
         fontFamily: 'SFPro-Bold',
