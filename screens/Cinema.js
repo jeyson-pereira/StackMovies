@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Platform } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { View, Text, FlatList, TouchableOpacity, Platform, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { getCinemas } from '../api';
@@ -48,9 +47,16 @@ const Schedules = (cinemas) => {
                 return (
                     <View key={index} style={[gStyles.cinema.containerItem, { marginTop: (index === 0 ? 0 : 20) }]}>
                         <Text style={gStyles.cinema.cinema}>{item.cinema}</Text>
-                        <Text style={gStyles.cinema.location}>{item.location}</Text>
+                        <TouchableOpacity
+                            onPress={() => Linking.openURL(`https://www.google.com/maps/search/?api=1&query=Cine%20${item.cinema.toLowerCase()}`)}
+                            style={gStyles.cinema.itemInfoWrapper}>
+                            <MaterialCommunityIcons name="google-maps" size={16} color={Colors.text} />
+                            <Text style={gStyles.cinema.location}>
+                                {item.location}
+                            </Text>
+                        </TouchableOpacity>
                         {item.format !== '' &&
-                            <View style={gStyles.cinema.formatWrapper}>
+                            <View style={gStyles.cinema.itemInfoWrapper}>
                                 <MaterialCommunityIcons name="ticket" size={16} color={Colors.text} />
                                 <Text style={gStyles.cinema.format}>{item.format}</Text>
                             </View>
