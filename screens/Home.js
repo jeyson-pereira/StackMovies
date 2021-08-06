@@ -1,29 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, Image, Animated, Platform, Dimensions, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AdMobBanner } from 'expo-ads-admob';
 import { getMovies } from '../api';
 import Loading from '../components/Loading';
 import Colors from '../constants/Colors';
 import gStyles from '../utils/GlobalStyles';
+import { AdMobBanner } from 'expo-ads-admob';
+import { adTestAndroid, androidBanner, adTestIOS, iosBanner } from '@env';
 
 const width = Dimensions.get('window').width;
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const SPACING = 10;
 
+//adUnitID
+const androidUnitID = !__DEV__ ? androidBanner : adTestAndroid;
+const iosUnitID = !__DEV__ ? iosBanner : adTestIOS;
+const bannerAdId = (Platform.OS === 'ios' ? iosUnitID : androidUnitID);
+
+
 export default Home = ({ navigation }) => {
     const scrollX = useRef(new Animated.Value(0)).current;
     const [movies, setMovies] = useState([]);
-
-    const bannerAdId = (
-        Platform.OS === 'ios' ? 'ca-app-pub-3940256099942544/2934735716' :
-            'ca-app-pub-3940256099942544/6300978111');
-
-    const bannerError = () => {
-        console.log("An error");
-        return;
-    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -116,9 +114,7 @@ export default Home = ({ navigation }) => {
             <View style={gStyles.styles.banner}>
                 <AdMobBanner
                     bannerSize="banner"
-                    adUnitID={bannerAdId} // Test ID, Replace with your-admob-unit-id
-                    servePersonalizedAds={false} // true or false
-                    didFailToReceiveAdWithError={bannerError}
+                    adUnitID={bannerAdId}
                 />
             </View>
         </SafeAreaView>

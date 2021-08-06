@@ -8,6 +8,12 @@ import gStyles from '../utils/GlobalStyles';
 import Colors from '../constants/Colors';
 import Loading from '../components/Loading';
 
+import { adTestAndroid, androidBanner, adTestIOS, iosBanner } from '@env';
+import { AdMobBanner } from 'expo-ads-admob';
+//adUnitID
+const androidUnitID = !__DEV__ ? androidBanner : adTestAndroid;
+const iosUnitID = !__DEV__ ? iosBanner : adTestIOS;
+const bannerAdId = (Platform.OS === 'ios' ? iosUnitID : androidUnitID);
 
 import { AdMobRewarded } from 'expo-ads-admob';
 const rewardedAdId = (
@@ -146,6 +152,12 @@ export default Cinema = ({ navigation, route }) => {
                 </View>
             </View>
             {cinemasSchedules !== null && Schedules(cinemasSchedules)}
+            <View style={[gStyles.styles.banner, { flex: cinemasSchedules === null ? 1 : 0 }]}>
+                <AdMobBanner
+                    bannerSize="banner"
+                    adUnitID={bannerAdId}
+                />
+            </View>
         </SafeAreaView>
     )
 }
