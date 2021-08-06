@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Platform, Linking } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { getCinemas } from '../api';
@@ -14,15 +15,8 @@ const androidUnitID = !__DEV__ ? androidBanner : adTestAndroid;
 const iosUnitID = !__DEV__ ? iosBanner : adTestIOS;
 const bannerAdId = (Platform.OS === 'ios' ? iosUnitID : androidUnitID);
 
-import { AdMobRewarded } from 'expo-ads-admob';
-const rewardedAdId = (
-    Platform.OS === 'ios' ? 'ca-app-pub-3940256099942544/1712485313' :
-        'ca-app-pub-3940256099942544/5224354917'
-);
-
-// Cities: V/cio, Bquilla, Bgta, Cali, Ctgna, Mde
-const city_id = ['', '_2', '_3', '_5', '_6', '_9', '_19'];
-
+//Cities: Bquilla, Bgta, Cali, Ctgna, Mde, V/cio
+const city_id = ['_2', '_3', '_5', '_6', '_9', '_19'];
 
 //Schedules View return
 const Schedules = (cinemas) => {
@@ -84,6 +78,18 @@ export default Cinema = ({ navigation, route }) => {
     const movie_title = route.params.movie_title;
     const movie_id = route.params.movie_id;
 
+    //Picker States
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        { label: 'Barranquilla', value: 'barranquilla' },
+        { label: 'Bogotá', value: 'bogota' },
+        { label: 'Cali', value: 'cali' },
+        { label: 'Cartagena', value: 'cartagena' },
+        { label: 'Medellín', value: 'medellin' },
+        { label: 'Villavicencio', value: 'villavicencio' }
+    ]);
+
     //Loading state
     const [isLoading, setIsLoading] = useState(false)
     //Cinemas and schedules state
@@ -94,23 +100,13 @@ export default Cinema = ({ navigation, route }) => {
         movie_inCity: null
     });
 
-    const setFilterCity = (value, index) => {
-        if (value !== null) {
-            setIsLoading(true);
-            setSelectedCity({ city: value, movie_inCity: `${movie_id}${city_id[index]}` });
-        }
+    const setFilterCity = () => {
+        let index = items.findIndex((item) => item.value === value);
+        setIsLoading(true);
+        setSelectedCity({ city: value, movie_inCity: `${movie_id}${city_id[index]}` });
     }
 
     useEffect(() => {
-        //Open ad once at open this screen
-        if (selectedCity.city === null) {
-            const showAd = async () => {
-                AdMobRewarded.setAdUnitID(rewardedAdId);
-                await AdMobRewarded.requestAdAsync();
-                await AdMobRewarded.showAdAsync();
-            }
-            showAd();
-        }
         //Get Cinemas and Schedules when Select City in Picker
         if (selectedCity.city !== null) {
             const fetchData = async () => {
@@ -139,21 +135,22 @@ export default Cinema = ({ navigation, route }) => {
                 <View>
                     <Text style={gStyles.cinema.Title}>{movie_title}</Text>
                     <View style={gStyles.cinema.Picker}>
-                        <Picker
-                            style={{ color: Colors.text }}
-                            selectedValue={selectedCity.city}
-                            onValueChange={(itemValue, itemIndex) => setFilterCity(itemValue, itemIndex)}
-                            dropdownIconColor={Colors.text}
-                            mode='dropdown'
-                        >
-                            <Picker.Item label="Selecciona tú ciudad:" color={Colors.bg} value={null} />
-                            <Picker.Item label="Barranquilla" value="barranquilla" />
-                            <Picker.Item label="Bogotá" value="bogota" />
-                            <Picker.Item label="Cali" value="cali" />
-                            <Picker.Item label="Cartagena" value="cartagena" />
-                            <Picker.Item label="Medellín" value="medellin" />
-                            <Picker.Item label="Villavicencio" value="villavicencio" />
-                        </Picker>
+                        <DropDownPicker
+                            open={open}
+                            value={value}
+                            items={items}
+                            setOpen={setOpen}
+                            setValue={setValue}
+                            setItems={setItems}
+                            onChangeValue={setFilterCity}
+                            placeholder="Selecciona tu ciudad"
+                            placeholderStyle={{fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.bgGradient}}
+                            itemSeparator
+                            listItemLabelStyle={{fontFamily: 'SFPro-Bold', fontSize: 14, color: Colors.bg}}
+                            labelStyle={{fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.bgGradient}}
+                            selectedItemLabelStyle={{color: Colors.bgGradient}}
+                            itemSeparatorStyle={{backgroundColor: 'rgba(0,0,0,.3)'}}
+                        />
                     </View>
                 </View>
             </View>
