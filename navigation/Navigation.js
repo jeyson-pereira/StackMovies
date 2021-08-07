@@ -22,7 +22,7 @@ const mainTheme = {
 export default function Navigation() {
     return (
         <LinearGradient
-            colors={[Colors.bg, Colors.bgGradient]}
+            colors={[Colors.bg, Colors.bgEnd]}
             style={{ flex: 1 }}>
             <NavigationContainer theme={mainTheme}>
                 <RootNavigator />

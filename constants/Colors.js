@@ -1,12 +1,11 @@
 const Colors = {
-  bg: '#0F2027',
-  bgGradient: '#2C5364',
+  bg: '#A43931',
+  bgMid: '#613E41',
+  bgEnd: '#1D4350',
+  bgEndSaturate: '#2d677b',
   text: '#FFFFFF',
   textTransparent: 'rgba(255,255,255,0.7)',
-  textDark: '#000000',
-  btnMain: '#435499',
-  btnTrailer: '#435499',
-  btnSchedule: '#437f99'
+  textDark: '#000000',  
 };
 
 export default Colors;
