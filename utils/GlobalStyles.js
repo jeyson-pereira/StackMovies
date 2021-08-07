@@ -39,18 +39,20 @@ const home = StyleSheet.create({
         margin: 0,
         marginBottom: 10
     },
-    infoContainer: {
+    buttonContainer: {
         justifyContent: 'center',
         borderRadius: 25,
-        backgroundColor: Colors.btnMain,
         width: '100%',
         elevation: 2,
         shadowColor: 'black',
-        shadowOpacity: 0.26,
+        shadowOpacity: 0.2,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10,
+    },
+    button: {
         paddingVertical: 8,
-        paddingHorizontal: 4
+        paddingHorizontal: 4,
+        borderRadius: 25
     },
     Title: {
         fontFamily: 'SFPro-Bold',
@@ -109,26 +111,26 @@ const movie = StyleSheet.create({
         marginBottom: 10,
         marginHorizontal: 20
     },
-    btn: {
+    btnContainer: {
         width: '50%',
-        padding: 10,
-        alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'center',
         elevation: 2,
         shadowColor: 'black',
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10
     },
+    button: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        padding: 10
+    },
     trailerBtn: {
-        backgroundColor: Colors.btnTrailer,
         borderBottomLeftRadius: 15,
         borderTopLeftRadius: 15,
         marginRight: 1
     },
     scheduleBtn: {
-        backgroundColor: Colors.btnSchedule,
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
         marginLeft: 1
