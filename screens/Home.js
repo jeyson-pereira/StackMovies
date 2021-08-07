@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, Image, Animated, Platform, Dimensions, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 import { getMovies } from '../api';
 import Loading from '../components/Loading';
 import Colors from '../constants/Colors';
@@ -44,10 +45,10 @@ export default Home = ({ navigation }) => {
                 <Text style={{
                     fontFamily: 'SFPro-Bold',
                     textAlign: 'center',
-                    fontSize: 30,
+                    fontSize: 40,
                     color: Colors.text,
                     marginHorizontal: 10
-                }}>cines-app</Text>
+                }}>StackMovies</Text>
             </View>
             <Animated.FlatList
                 data={movies}
@@ -102,9 +103,15 @@ export default Home = ({ navigation }) => {
                                 <TouchableOpacity onPress={() => navigation.navigate('Movie', {
                                     movie: item,
                                 })}
-                                    style={gStyles.home.infoContainer}
+                                    style={gStyles.home.buttonContainer}
                                 >
-                                    <Text style={gStyles.home.Title}>{item.title}</Text>
+                                    <LinearGradient
+                                        colors={[Colors.bg, Colors.bgEnd]}
+                                        style={gStyles.home.button}
+                                        start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }}
+                                    >
+                                        <Text style={gStyles.home.Title}>{item.title}</Text>
+                                    </LinearGradient>
                                 </TouchableOpacity>
                             </Animated.View>
                         </View>
