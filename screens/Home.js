@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { getMovies } from '../api';
 import Loading from '../components/Loading';
 import Colors from '../constants/Colors';
-import gStyles from '../utils/GlobalStyles';
+import { mainStyles, homeStyles } from '../utils/GlobalStyles';
 import { AdMobBanner } from 'expo-ads-admob';
 import { adTestAndroid, androidBanner, adTestIOS, iosBanner } from '@env';
 
@@ -98,19 +98,19 @@ export default Home = ({ navigation }) => {
                                 <Image source={{
                                     uri: `${item.cover}`
                                 }}
-                                    style={[gStyles.home.posterImage, { height: ITEM_SIZE * 1.2 }]}
+                                    style={[homeStyles.posterImage, { height: ITEM_SIZE * 1.2 }]}
                                 />
                                 <TouchableOpacity onPress={() => navigation.navigate('Movie', {
                                     movie: item,
                                 })}
-                                    style={gStyles.home.buttonContainer}
+                                    style={homeStyles.buttonContainer}
                                 >
                                     <LinearGradient
                                         colors={[Colors.bg, Colors.bgEnd]}
-                                        style={gStyles.home.button}
+                                        style={homeStyles.button}
                                         start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }}
                                     >
-                                        <Text style={gStyles.home.Title}>{item.title}</Text>
+                                        <Text style={homeStyles.Title}>{item.title}</Text>
                                     </LinearGradient>
                                 </TouchableOpacity>
                             </Animated.View>
@@ -118,7 +118,7 @@ export default Home = ({ navigation }) => {
                     )
                 }}
             />
-            <View style={gStyles.styles.banner}>
+            <View style={mainStyles.banner}>
                 <AdMobBanner
                     bannerSize="banner"
                     adUnitID={bannerAdId}

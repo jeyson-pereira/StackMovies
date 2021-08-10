@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import Colors from '../constants/Colors';
 
 //General Styles
-const styles = StyleSheet.create({
+export const mainStyles = StyleSheet.create({
     Title: {
         fontFamily: 'SFPro-Bold',
         fontSize: 24,
@@ -27,11 +27,20 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'flex-end',
         alignItems: 'center'
+    },
+    reload: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: Colors.bg,
+        padding: 8,
+        borderRadius: 15,
+        marginTop: 10,
+        elevation: 2
     }
 });
 
 //Styles Home Screen
-const home = StyleSheet.create({
+export const homeStyles = StyleSheet.create({
     posterImage: {
         width: '100%',
         resizeMode: 'contain',
@@ -64,7 +73,7 @@ const home = StyleSheet.create({
 })
 
 //Styles Movie Screen
-const movie = StyleSheet.create({
+export const movieStyles = StyleSheet.create({
     posterImage: {
         width: 120,
         height: 200,
@@ -154,7 +163,7 @@ const movie = StyleSheet.create({
 });
 
 //Styles Cinema Screen
-const cinema = StyleSheet.create({
+export const cinemaStyles = StyleSheet.create({
     Title: {
         fontFamily: 'SFPro-Bold',
         fontSize: 24,
@@ -220,5 +229,3 @@ const cinema = StyleSheet.create({
         color: Colors.bg
     }
 });
-
-export default { styles, home, movie, cinema };

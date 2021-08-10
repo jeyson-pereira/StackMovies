@@ -4,7 +4,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { getCinemas } from '../api';
-import gStyles from '../utils/GlobalStyles';
+import { mainStyles, cinemaStyles } from '../utils/GlobalStyles';
 import Colors from '../constants/Colors';
 import Loading from '../components/Loading';
 
@@ -23,7 +23,7 @@ const Schedules = (cinemas) => {
     //Movie hasn't schedules
     if (cinemas.length === 0) {
         return (
-            <View style={gStyles.cinema.noSchedules}>
+            <View style={cinemaStyles.noSchedules}>
                 <MaterialCommunityIcons name='emoticon-sad-outline' size={40} color={Colors.textTransparent} />
                 <Text style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent }}>
                     Lo siento, no hay horarios disponibles el día de hoy.
@@ -39,28 +39,28 @@ const Schedules = (cinemas) => {
             keyExtractor={(item) => item.cinema}
             renderItem={({ item, index }) => {
                 return (
-                    <View key={index} style={[gStyles.cinema.containerItem, { marginTop: (index === 0 ? 0 : 20) }]}>
-                        <Text style={gStyles.cinema.cinema}>{item.cinema}</Text>
+                    <View key={index} style={[cinemaStyles.containerItem, { marginTop: (index === 0 ? 0 : 20) }]}>
+                        <Text style={cinemaStyles.cinema}>{item.cinema}</Text>
                         <TouchableOpacity
                             onPress={() => Linking.openURL(`https://www.google.com/maps/search/?api=1&query=Cine%20${item.cinema.toLowerCase()}`)}
-                            style={gStyles.cinema.itemInfoWrapper}>
+                            style={cinemaStyles.itemInfoWrapper}>
                             <MaterialCommunityIcons name="google-maps" size={16} color={Colors.text} />
-                            <Text style={gStyles.cinema.location}>
+                            <Text style={cinemaStyles.location}>
                                 {item.location}
                             </Text>
                         </TouchableOpacity>
                         {item.format !== '' &&
-                            <View style={gStyles.cinema.itemInfoWrapper}>
+                            <View style={cinemaStyles.itemInfoWrapper}>
                                 <MaterialCommunityIcons name="ticket" size={16} color={Colors.text} />
-                                <Text style={gStyles.cinema.format}>{item.format}</Text>
+                                <Text style={cinemaStyles.format}>{item.format}</Text>
                             </View>
                         }
-                        <View style={gStyles.cinema.schedulesWrapper}>
+                        <View style={cinemaStyles.schedulesWrapper}>
                             {
                                 item.schedules.map((schedule, index) => {
                                     return (
-                                        <View key={index} style={gStyles.cinema.scheduleItem}>
-                                            <Text style={gStyles.cinema.schedule}>{schedule}</Text>
+                                        <View key={index} style={cinemaStyles.scheduleItem}>
+                                            <Text style={cinemaStyles.schedule}>{schedule}</Text>
                                         </View>
                                     )
                                 })
@@ -125,7 +125,7 @@ export default Cinema = ({ navigation, route }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View>
-                <TouchableOpacity style={gStyles.styles.goBack}
+                <TouchableOpacity style={mainStyles.goBack}
                     onPress={() => navigation.pop()}
                 >
                     <Ionicons name='arrow-back' size={36} color='white' />
@@ -133,8 +133,8 @@ export default Cinema = ({ navigation, route }) => {
             </View>
             <View style={{ marginHorizontal: 20 }}>
                 <View>
-                    <Text style={gStyles.cinema.Title}>{movie_title}</Text>
-                    <View style={gStyles.cinema.Picker}>
+                    <Text style={cinemaStyles.Title}>{movie_title}</Text>
+                    <View style={cinemaStyles.Picker}>
                         <DropDownPicker
                             open={open}
                             value={value}
@@ -157,7 +157,7 @@ export default Cinema = ({ navigation, route }) => {
                 </View>
             </View>
             {cinemasSchedules !== null && Schedules(cinemasSchedules)}
-            <View style={[gStyles.styles.banner, { flex: cinemasSchedules === null ? 1 : 0 }]}>
+            <View style={[mainStyles.banner, { flex: cinemasSchedules === null ? 1 : 0 }]}>
                 <AdMobBanner
                     bannerSize="banner"
                     adUnitID={bannerAdId}
