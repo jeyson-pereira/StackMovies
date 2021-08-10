@@ -4,9 +4,13 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { getCinemas } from '../api';
+import Loading from '../components/Loading';
+import TryAgain from '../components/TryAgain';
+
 import { mainStyles, cinemaStyles } from '../utils/GlobalStyles';
 import Colors from '../constants/Colors';
-import Loading from '../components/Loading';
+
+
 
 import { adTestAndroid, androidBanner, adTestIOS, iosBanner } from '@env';
 import { AdMobBanner } from 'expo-ads-admob';
@@ -91,9 +95,10 @@ export default Cinema = ({ navigation, route }) => {
     ]);
 
     //Loading state
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [isDisconnected, setIsDisconnected] = useState(false);
     //Cinemas and schedules state
-    const [cinemasSchedules, setCinemasSchedules] = useState(null)
+    const [cinemasSchedules, setCinemasSchedules] = useState(null);
     //Selected city state
     const [selectedCity, setSelectedCity] = useState({
         city: null,
@@ -102,21 +107,21 @@ export default Cinema = ({ navigation, route }) => {
 
     const setFilterCity = () => {
         let index = items.findIndex((item) => item.value === value);
-        setIsLoading(true);
         setSelectedCity({ city: value, movie_inCity: `${movie_id}${city_id[index]}` });
     }
 
     useEffect(() => {
         //Get Cinemas and Schedules when Select City in Picker
-        if (selectedCity.city !== null) {
+        if (selectedCity.city !== null && isDisconnected === false) {
             const fetchData = async () => {
-                const data = await getCinemas(selectedCity.city, selectedCity.movie_inCity);
-                setCinemasSchedules(data);
+                setIsLoading(true);
+                let data = await getCinemas(selectedCity.city, selectedCity.movie_inCity);
+                data !== null ? setCinemasSchedules(data) : (setIsDisconnected(true), setCinemasSchedules(null)) ;
                 setIsLoading(false);
             };
             fetchData(cinemasSchedules);
         }
-    }, [selectedCity]);
+    }, [selectedCity, isDisconnected]);
 
 
     if (isLoading) {
@@ -157,6 +162,7 @@ export default Cinema = ({ navigation, route }) => {
                 </View>
             </View>
             {cinemasSchedules !== null && Schedules(cinemasSchedules)}
+            {isDisconnected && <TryAgain reload={setIsDisconnected} />}
             <View style={[mainStyles.banner, { flex: cinemasSchedules === null ? 1 : 0 }]}>
                 <AdMobBanner
                     bannerSize="banner"
