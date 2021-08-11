@@ -2,7 +2,7 @@
   "expo": {
     "name": "StackMovies",
     "slug": "stackmovies",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -10,6 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#A43931"
     },
+    "backgroundColor": "#A43931",
     "androidStatusBar": {
       "barStyle": "light-content"
     },
@@ -21,7 +22,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2885585677001751~1143876618"
       }
