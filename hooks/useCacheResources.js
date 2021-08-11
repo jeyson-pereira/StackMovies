@@ -17,6 +17,7 @@ export default function useCachedResources() {
           'SFPro-Light': require('../assets/fonts/SF-Pro-Display-Light.otf'),
           'SFPro-Medium': require('../assets/fonts/SF-Pro-Display-Medium.otf'),
           'SFPro-Bold': require('../assets/fonts/SF-Pro-Display-Bold.otf'),
+          'SFPro-Heavy': require('../assets/fonts/SF-Pro-Display-Heavy.otf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
