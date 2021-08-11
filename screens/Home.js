@@ -48,13 +48,13 @@ export default Home = ({ navigation }) => {
     if (isLoading) {
         return <Loading />;
     }
-    if (movies.length !== 0 && !isDisconnected) {
-        return (
-            <SafeAreaView style={{ flex: 1 }}>
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 20 }}>
                 <Image source={require('../assets/icon-base.png')} style={mainStyles.logo} />
                 <Text style={mainStyles.Title}>StackMovies</Text>
             </View>
+            {movies.length !== 0 &&
                 <Animated.FlatList
                     data={movies}
                     keyExtractor={(item) => item.id}
@@ -123,14 +123,14 @@ export default Home = ({ navigation }) => {
                         )
                     }}
                 />
-                <View style={mainStyles.banner}>
-                    <AdMobBanner
-                        bannerSize="banner"
-                        adUnitID={bannerAdId}
-                    />
-                </View>
-            </SafeAreaView>
-        )
-    }
-    return (<TryAgain reload={setIsDisconnected} />)
+            }
+            {isDisconnected && <TryAgain reload={setIsDisconnected} />}
+            <View style={mainStyles.banner}>
+                <AdMobBanner
+                    bannerSize="banner"
+                    adUnitID={bannerAdId}
+                />
+            </View>
+        </SafeAreaView>
+    )
 }
