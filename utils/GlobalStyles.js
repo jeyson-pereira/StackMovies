@@ -6,12 +6,12 @@ export const mainStyles = StyleSheet.create({
     header: {
         flex: 1,
         alignItems: 'center',
-        margin: 20
+        marginBottom: 10
     },
     Title: {
         resizeMode: 'center',
         maxWidth: 320,
-        height: 100,
+        height: 100
     },
     container: {
         flex: 1,

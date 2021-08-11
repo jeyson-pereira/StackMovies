@@ -94,6 +94,7 @@ export default Home = ({ navigation }) => {
                                     style={{
                                         marginHorizontal: SPACING * 2,
                                         padding: SPACING,
+                                        marginTop: SPACING,
                                         alignItems: 'center',
                                         backgroundColor: 'white',
                                         borderRadius: 30,
