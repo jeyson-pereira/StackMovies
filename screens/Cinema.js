@@ -108,6 +108,7 @@ export default Cinema = ({ navigation, route }) => {
     const setFilterCity = () => {
         let index = items.findIndex((item) => item.value === value);
         setSelectedCity({ city: value, movie_inCity: `${movie_id}${city_id[index]}` });
+        setIsDisconnected(false);
     }
 
     useEffect(() => {
@@ -116,13 +117,12 @@ export default Cinema = ({ navigation, route }) => {
             const fetchData = async () => {
                 setIsLoading(true);
                 let data = await getCinemas(selectedCity.city, selectedCity.movie_inCity);
-                data !== null ? setCinemasSchedules(data) : (setIsDisconnected(true), setCinemasSchedules(null)) ;
+                data !== null ? setCinemasSchedules(data) : (setIsDisconnected(true), setCinemasSchedules(null));
                 setIsLoading(false);
             };
             fetchData(cinemasSchedules);
         }
     }, [selectedCity, isDisconnected]);
-
 
     if (isLoading) {
         return <Loading />
