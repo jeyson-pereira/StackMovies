@@ -50,8 +50,9 @@ export default Home = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 20 }}>
-                <Image source={require('../assets/icon-base.png')} style={mainStyles.logo} />
+            <View style={mainStyles.header}>
+                <Image source={require('../assets/icon-border.png')}
+                    style={mainStyles.logo} />
                 <Text style={mainStyles.Title}>StackMovies</Text>
             </View>
             {movies.length !== 0 &&
