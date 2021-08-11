@@ -4,15 +4,14 @@ import Colors from '../constants/Colors';
 //General Styles
 export const mainStyles = StyleSheet.create({
     header: {
-        flex : 1,
-        justifyContent: 'center',
-        alignSelf: 'center',
-        marginHorizontal: 20
+        flex: 1,
+        alignItems: 'center',
+        margin: 20
     },
     Title: {
-        flex: 1,
         resizeMode: 'center',
-        maxWidth: 320
+        maxWidth: 320,
+        height: 100,
     },
     container: {
         flex: 1,

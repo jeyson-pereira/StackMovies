@@ -124,7 +124,11 @@ export default Home = ({ navigation }) => {
                     }}
                 />
             }
-            {isDisconnected && <TryAgain reload={setIsDisconnected} />}
+            {isDisconnected && (
+                <View style={{ alignSelf: 'center' }}>
+                    <TryAgain reload={setIsDisconnected} />
+                </View>
+            )}
             <View style={mainStyles.banner}>
                 <AdMobBanner
                     bannerSize="banner"
