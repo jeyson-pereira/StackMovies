@@ -16,8 +16,8 @@ export default function TryAgain({ reload }) {
                 source={require('../assets/animations/lonely-404.json')}
             />
             <Text style={{ color: 'white', textAlign: 'center', fontSize: 16, fontFamily: 'SFPro-Regular' }}>
-                Oops! Algo salió mal.{'\n'}Por favor, compruebe si el dispositivo está
-                conectado a un plan de datos móviles estable o WiFi.
+                Oops! Algo salió mal.{'\n'}
+                Revisa tu conexión e intentalo de nuevo.
             </Text>
             <TouchableOpacity
                 style={mainStyles.reload}
