@@ -3,10 +3,21 @@ import Colors from '../constants/Colors';
 
 //General Styles
 export const mainStyles = StyleSheet.create({
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 20
+    },
     Title: {
-        fontFamily: 'SFPro-Bold',
-        fontSize: 24,
+        fontFamily: 'SFPro-Heavy',
+        textAlign: 'center',
+        fontSize: 40,
         color: Colors.text
+    },
+    logo: {
+        width: 80,
+        height: 80
     },
     container: {
         flex: 1,
@@ -27,6 +38,11 @@ export const mainStyles = StyleSheet.create({
         width: '100%',
         justifyContent: 'flex-end',
         alignItems: 'center'
+    },
+    loadText: {
+        fontFamily: 'SFPro-Bold',
+        fontSize: 24,
+        color: Colors.text
     },
     reload: {
         flexDirection: 'row',
