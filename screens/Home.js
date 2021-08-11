@@ -51,15 +51,10 @@ export default Home = ({ navigation }) => {
     if (movies.length !== 0 && !isDisconnected) {
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center', margin: 20 }}>
-                    <Text style={{
-                        fontFamily: 'SFPro-Bold',
-                        textAlign: 'center',
-                        fontSize: 40,
-                        color: Colors.text,
-                        marginHorizontal: 10
-                    }}>StackMovies</Text>
-                </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 20 }}>
+                <Image source={require('../assets/icon-base.png')} style={mainStyles.logo} />
+                <Text style={mainStyles.Title}>StackMovies</Text>
+            </View>
                 <Animated.FlatList
                     data={movies}
                     keyExtractor={(item) => item.id}
