@@ -6,7 +6,7 @@ export default Loading = () => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ActivityIndicator color='white' size='large' />
-            <Text style={mainStyles.Title}>Cargando...</Text>
+            <Text style={mainStyles.loadText}>Cargando...</Text>
         </View>
     )
 }
