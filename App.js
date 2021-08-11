@@ -11,14 +11,7 @@ export default function App() {
   const isLoadingComplete = useCacheResources();
 
   if (!isLoadingComplete) {
-    return (
-      <SafeAreaProvider>
-        <LinearGradient
-            colors={[Colors.bg, Colors.bgEnd]}
-            style={{ flex: 1 }}>
-        </LinearGradient>
-      </SafeAreaProvider>
-    );
+    return null
   }
 
   return (

@@ -30,7 +30,7 @@ const Schedules = (cinemas) => {
             <View style={cinemaStyles.noSchedules}>
                 <MaterialCommunityIcons name='emoticon-sad-outline' size={40} color={Colors.textTransparent} />
                 <Text style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent }}>
-                    Lo siento, no hay horarios disponibles el día de hoy.
+                    Lo siento, esta película no está disponible en tu ciudad o no hay horarios disponibles el día de hoy.
                 </Text>
             </View>
         )
