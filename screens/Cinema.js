@@ -10,8 +10,6 @@ import TryAgain from '../components/TryAgain';
 import { mainStyles, cinemaStyles } from '../utils/GlobalStyles';
 import Colors from '../constants/Colors';
 
-
-
 import { adTestAndroid, androidBanner, adTestIOS, iosBanner } from '@env';
 import { AdMobBanner } from 'expo-ads-admob';
 //adUnitID
@@ -29,7 +27,7 @@ const Schedules = (cinemas) => {
         return (
             <View style={cinemaStyles.noSchedules}>
                 <MaterialCommunityIcons name='emoticon-sad-outline' size={40} color={Colors.textTransparent} />
-                <Text style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent }}>
+                <Text style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent, textAlign:'center' }}>
                     Lo siento, esta película no está disponible en tu ciudad o no hay horarios disponibles el día de hoy.
                 </Text>
             </View>
