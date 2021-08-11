@@ -4,23 +4,15 @@ import Colors from '../constants/Colors';
 //General Styles
 export const mainStyles = StyleSheet.create({
     header: {
-        flexDirection: 'row',
+        flex : 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        margin: 20
+        alignSelf: 'center',
+        marginHorizontal: 20
     },
     Title: {
-        fontFamily: 'SFPro-Heavy',
-        textAlign: 'center',
-        fontSize: 40,
-        color: Colors.text,
-        textShadowColor: 'rgba(0,0,0,.5)',
-        textShadowRadius: 5,
-        textShadowOffset: { width: 2, height: 5 }
-    },
-    logo: {
-        width: 80,
-        height: 80
+        flex: 1,
+        resizeMode: 'center',
+        maxWidth: 320
     },
     container: {
         flex: 1,

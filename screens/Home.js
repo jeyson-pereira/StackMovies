@@ -51,9 +51,8 @@ export default Home = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={mainStyles.header}>
-                <Image source={require('../assets/icon-border.png')}
-                    style={mainStyles.logo} />
-                <Text style={mainStyles.Title}>StackMovies</Text>
+                <Image source={require('../assets/header.png')}
+                    style={mainStyles.Title} />
             </View>
             {movies.length !== 0 &&
                 <Animated.FlatList
