@@ -28,7 +28,7 @@ const Schedules = (cinemas) => {
             <View style={cinemaStyles.noSchedules}>
                 <MaterialCommunityIcons name='emoticon-sad-outline' size={40} color={Colors.textTransparent} />
                 <Text style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent, textAlign:'center' }}>
-                    Lo siento, esta película no está disponible en tu ciudad o no hay horarios disponibles el día de hoy.
+                    Lo siento, esta película no se encuentra en tu ciudad o no hay horarios disponibles el día de hoy.
                 </Text>
             </View>
         )
@@ -145,6 +145,7 @@ export default Cinema = ({ navigation, route }) => {
                             setOpen={setOpen}
                             setValue={setValue}
                             setItems={setItems}
+                            zIndex={1000}
                             onChangeValue={setFilterCity}
                             placeholder="Selecciona tu ciudad"
                             placeholderStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.bgEnd }}
