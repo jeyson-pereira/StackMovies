@@ -112,11 +112,13 @@ export default Home = ({ navigation }) => {
                                         style={homeStyles.buttonContainer}
                                     >
                                         <LinearGradient
-                                            colors={[Colors.bg, Colors.bgEnd]}
+                                            colors={[Colors.bgEnd, Colors.bg]}
                                             style={homeStyles.button}
                                             start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }}
                                         >
-                                            <Text style={homeStyles.Title}>{item.title}</Text>
+                                            <Text style={homeStyles.Title} allowFontScaling={false} >
+                                                {item.title}
+                                            </Text>
                                         </LinearGradient>
                                     </TouchableOpacity>
                                 </Animated.View>

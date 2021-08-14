@@ -40,23 +40,21 @@ export default Movie = ({ navigation, route }) => {
                 >
                     <Ionicons name='arrow-back' size={36} color='white' />
                 </TouchableOpacity>
-                <View style={{ alignSelf: 'center', alignItems: 'center' }}>
+                <View style={{ alignSelf: 'center', alignItems: 'center', width: '80%' }}>
                     <Image source={{ uri: `${cover}` }} style={movieStyles.posterImage} />
-                    <Text style={movieStyles.title}>{title}</Text>
+                    <Text style={movieStyles.title} allowFontScaling={false}>{title}</Text>
                 </View>
                 <ScrollView style={{ marginBottom: 10 }}>
                     <View style={{ flex: 1, width: '80%', alignSelf: 'center' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={movieStyles.info}>Género: {movieInfo.genre}</Text>
-                            <Text style={movieStyles.info}>Clasificación: {movieInfo.clasification}</Text>
+                            <Text style={movieStyles.info} allowFontScaling={false}>Género: {movieInfo.genre}</Text>
+                            <Text style={movieStyles.info} allowFontScaling={false}>Clasificación: {movieInfo.clasification}</Text>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={movieStyles.extraInfo}>Duración: {movieInfo.duration}.</Text>
-                            <Text style={movieStyles.extraInfo}>Director: {movieInfo.director}.</Text>
-                        </View>
+                        <Text style={movieStyles.extraInfo} allowFontScaling={false}>Duración: {movieInfo.duration}.</Text>
+                        <Text style={movieStyles.extraInfo} allowFontScaling={false}>Director: {movieInfo.director}.</Text>
                         {movieInfo.actores !== '' &&
                             <View style={mainStyles.hr}>
-                                <Text style={movieStyles.people}>Actores: {movieInfo.actores}.</Text>
+                                <Text style={movieStyles.people} allowFontScaling={false}>Actores: {movieInfo.actores}.</Text>
                             </View>
                         }
                         <View style={mainStyles.hr}>
@@ -73,7 +71,7 @@ export default Movie = ({ navigation, route }) => {
                             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                         >
                             <Ionicons name='film-outline' size={24} style={movieStyles.icon} />
-                            <Text style={movieStyles.btnText}>Ver Trailer</Text>
+                            <Text allowFontScaling={false} style={movieStyles.btnText}>Ver Trailer</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                     <TouchableOpacity style={[movieStyles.btnContainer, movieStyles.scheduleBtn]}
@@ -84,7 +82,7 @@ export default Movie = ({ navigation, route }) => {
                             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                         >
                             <MaterialCommunityIcons name='calendar-clock' size={24} style={movieStyles.icon} />
-                            <Text style={movieStyles.btnText}>Ver Horarios</Text>
+                            <Text allowFontScaling={false} style={movieStyles.btnText}>Ver Horarios</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                 </View>

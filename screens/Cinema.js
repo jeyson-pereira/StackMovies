@@ -27,7 +27,7 @@ const Schedules = (cinemas) => {
         return (
             <View style={cinemaStyles.noSchedules}>
                 <MaterialCommunityIcons name='emoticon-sad-outline' size={40} color={Colors.textTransparent} />
-                <Text style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent, textAlign:'center' }}>
+                <Text allowFontScaling={false} style={{ fontFamily: 'SFPro-Bold', color: Colors.textTransparent, textAlign: 'center' }}>
                     Lo siento, esta película no se encuentra en tu ciudad o no hay horarios disponibles el día de hoy.
                 </Text>
             </View>
@@ -42,19 +42,19 @@ const Schedules = (cinemas) => {
             renderItem={({ item, index }) => {
                 return (
                     <View key={index} style={[cinemaStyles.containerItem, { marginTop: (index === 0 ? 0 : 20) }]}>
-                        <Text style={cinemaStyles.cinema}>{item.cinema}</Text>
+                        <Text allowFontScaling={false} style={cinemaStyles.cinema}>{item.cinema}</Text>
                         <TouchableOpacity
                             onPress={() => Linking.openURL(`https://www.google.com/maps/search/?api=1&query=Cine%20${item.cinema.toLowerCase()}`)}
                             style={cinemaStyles.itemInfoWrapper}>
                             <MaterialCommunityIcons name="google-maps" size={16} color={Colors.text} />
-                            <Text style={cinemaStyles.location}>
+                            <Text allowFontScaling={false} style={cinemaStyles.location}>
                                 {item.location}
                             </Text>
                         </TouchableOpacity>
                         {item.format !== '' &&
                             <View style={cinemaStyles.itemInfoWrapper}>
                                 <MaterialCommunityIcons name="ticket" size={16} color={Colors.text} />
-                                <Text style={cinemaStyles.format}>{item.format}</Text>
+                                <Text allowFontScaling={false} style={cinemaStyles.format}>{item.format}</Text>
                             </View>
                         }
                         <View style={cinemaStyles.schedulesWrapper}>
@@ -62,7 +62,7 @@ const Schedules = (cinemas) => {
                                 item.schedules.map((schedule, index) => {
                                     return (
                                         <View key={index} style={cinemaStyles.scheduleItem}>
-                                            <Text style={cinemaStyles.schedule}>{schedule}</Text>
+                                            <Text allowFontScaling={false} style={cinemaStyles.schedule}>{schedule}</Text>
                                         </View>
                                     )
                                 })
@@ -136,7 +136,7 @@ export default Cinema = ({ navigation, route }) => {
             </View>
             <View style={{ marginHorizontal: 20 }}>
                 <View>
-                    <Text style={cinemaStyles.Title}>{movie_title}</Text>
+                    <Text allowFontScaling={false} style={cinemaStyles.Title}>{movie_title}</Text>
                     <View style={cinemaStyles.Picker}>
                         <DropDownPicker
                             open={open}
@@ -154,7 +154,6 @@ export default Cinema = ({ navigation, route }) => {
                             labelStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.text }}
                             selectedItemContainerStyle={{backgroundColor: Colors.bg }}
                             itemSeparatorStyle={{ backgroundColor: Colors.bgEnd, opacity: 0.5 }}
-                            dropDownContainerStyle={{ borderColor: Colors.bgEnd }}
                             style={{ borderColor: Colors.bgEnd }}
                             listMode="MODAL"
                             theme="DARK"
