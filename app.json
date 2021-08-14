@@ -11,7 +11,10 @@
       "backgroundColor": "#A43931"
     },
     "backgroundColor": "#A43931",
-    "platforms": ["android", "ios"],
+    "platforms": [
+      "android",
+      "ios"
+    ],
     "androidStatusBar": {
       "barStyle": "light-content"
     },
@@ -26,7 +29,8 @@
       "supportsTablet": false,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2885585677001751~1143876618"
-      }
+      },
+      "bundleIdentifier": "com.stackverse.stackmovies"
     },
     "android": {
       "adaptiveIcon": {
