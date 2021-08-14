@@ -1,18 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import Colors from '../constants/Colors';
 
 //General Styles
 export const mainStyles = StyleSheet.create({
-    header: {
-        flex: 1,
-        alignItems: 'center',
-        marginBottom: 10
-    },
-    Title: {
-        resizeMode: 'center',
-        maxWidth: 320,
-        height: 100
-    },
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -51,16 +41,23 @@ export const mainStyles = StyleSheet.create({
 
 //Styles Home Screen
 export const homeStyles = StyleSheet.create({
+    header:{
+        marginHorizontal: 20,
+        height: '10%',
+    },
+    logo: {
+        width: '100%',
+        resizeMode: 'contain'
+    },
     posterImage: {
         width: '100%',
-        resizeMode: 'contain',
-        borderRadius: 15,
+        resizeMode: 'cover',
+        borderRadius: 20,
         margin: 0,
-        marginBottom: 10
     },
     buttonContainer: {
-        justifyContent: 'center',
-        borderRadius: 25,
+        marginTop: 10,
+        borderRadius: 15,
         width: '100%',
         elevation: 2,
         shadowColor: 'black',
@@ -69,16 +66,18 @@ export const homeStyles = StyleSheet.create({
         shadowRadius: 10,
     },
     button: {
-        paddingVertical: 8,
-        paddingHorizontal: 4,
-        borderRadius: 25
+        borderRadius: 15,
+        height: 35,
+        padding: 3,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     Title: {
         fontFamily: 'SFPro-Bold',
         textAlign: 'center',
-        fontSize: 15,
         color: Colors.text,
-        marginHorizontal: 10
+        fontSize: 12,
+        marginHorizontal: 20
     }
 })
 
@@ -87,14 +86,14 @@ export const movieStyles = StyleSheet.create({
     posterImage: {
         width: 120,
         height: 200,
-        resizeMode: 'contain',
-        borderRadius: 24,
+        resizeMode: 'cover',
+        borderRadius: 20,
         margin: 0
     },
     title: {
-        marginBottom: 10,
+        marginVertical: 10,
         fontFamily: 'SFPro-Bold',
-        fontSize: 24,
+        fontSize: 20,
         marginHorizontal: 20,
         color: Colors.text,
         textAlign: 'center'
@@ -102,22 +101,23 @@ export const movieStyles = StyleSheet.create({
     info: {
         color: Colors.text,
         fontFamily: 'SFPro-Medium',
-        fontSize: 16,
+        fontSize: 14,
         textTransform: 'capitalize'
     },
     extraInfo: {
         color: Colors.text,
         fontFamily: 'SFPro-Regular',
-        fontSize: 14
+        fontSize: 13
     },
     people: {
         fontFamily: 'SFPro-Light',
+        fontSize: 12,
         color: Colors.text,
         marginTop: 10
     },
     overview: {
         fontFamily: 'SFPro-Regular',
-        fontSize: 15,
+        fontSize: 16,
         color: Colors.text,
         textAlign: 'justify',
         marginTop: 10
@@ -139,6 +139,7 @@ export const movieStyles = StyleSheet.create({
         shadowRadius: 10
     },
     button: {
+        borderRadius: Platform.OS === 'ios' ? 15: 0,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -147,12 +148,12 @@ export const movieStyles = StyleSheet.create({
     trailerBtn: {
         borderBottomLeftRadius: 15,
         borderTopLeftRadius: 15,
-        marginRight: 1
+        marginRight: Platform.OS === 'ios' ? 2 : 1
     },
     scheduleBtn: {
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
-        marginLeft: 1
+        marginLeft: Platform.OS === 'ios' ? 2 : 1
     },
     icon: {
         textShadowColor: 'black',
@@ -169,7 +170,6 @@ export const movieStyles = StyleSheet.create({
         textShadowRadius: 10,
         textShadowOffset: { width: 0, height: 2 }
     }
-
 });
 
 //Styles Cinema Screen
@@ -179,7 +179,8 @@ export const cinemaStyles = StyleSheet.create({
         fontSize: 24,
         color: Colors.text,
         alignSelf: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 10
     },
     Picker: {
         alignSelf: 'center',

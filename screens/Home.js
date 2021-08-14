@@ -13,11 +13,12 @@ import { AdMobBanner } from 'expo-ads-admob';
 import { adTestAndroid, androidBanner, adTestIOS, iosBanner } from '@env';
 
 
-const width = Dimensions.get('window').width;
+const { width, height } = Dimensions.get('window');
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
 const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const SPACING = 10;
-
+const screenOuputRange = height <= 650 ? [0, 0, 0] : [25, -25, 25]
+const ratio = width/960;
 //adUnitID
 const androidUnitID = !__DEV__ ? androidBanner : adTestAndroid;
 const iosUnitID = !__DEV__ ? iosBanner : adTestIOS;
@@ -27,10 +28,8 @@ const bannerAdId = (Platform.OS === 'ios' ? iosUnitID : androidUnitID);
 export default Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isDisconnected, setIsDisconnected] = useState(false);
-
     const scrollX = useRef(new Animated.Value(0)).current;
     const [movies, setMovies] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
@@ -50,9 +49,9 @@ export default Home = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <View style={mainStyles.header}>
-                <Image source={require('../assets/header.png')}
-                    style={mainStyles.Title} />
+            <View style={homeStyles.header}>
+                <Image source={require('../assets/header.png')} 
+                style={[homeStyles.logo,{height: ratio*250}]}/>
             </View>
             {movies.length !== 0 &&
                 <Animated.FlatList
@@ -84,7 +83,7 @@ export default Home = ({ navigation }) => {
 
                         const translateY = scrollX.interpolate({
                             inputRange,
-                            outputRange: [0, -50, 0],
+                            outputRange: screenOuputRange,
                             extrapolate: 'clamp',
                         });
 
@@ -94,7 +93,6 @@ export default Home = ({ navigation }) => {
                                     style={{
                                         marginHorizontal: SPACING * 2,
                                         padding: SPACING,
-                                        marginTop: SPACING,
                                         alignItems: 'center',
                                         backgroundColor: 'white',
                                         borderRadius: 30,
