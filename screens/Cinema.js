@@ -148,14 +148,17 @@ export default Cinema = ({ navigation, route }) => {
                             zIndex={1000}
                             onChangeValue={setFilterCity}
                             placeholder="Selecciona tu ciudad"
-                            placeholderStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.bgEnd }}
+                            placeholderStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.text }}
                             itemSeparator
-                            listItemLabelStyle={{ fontFamily: 'SFPro-Bold', fontSize: 14, color: Colors.bg }}
-                            labelStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.bgEnd }}
-                            selectedItemLabelStyle={{ color: Colors.bgEnd }}
+                            listItemLabelStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.text, marginHorizontal: 10 }}
+                            labelStyle={{ fontFamily: 'SFPro-Bold', fontSize: 16, color: Colors.text }}
+                            selectedItemContainerStyle={{backgroundColor: Colors.bg }}
                             itemSeparatorStyle={{ backgroundColor: Colors.bgEnd, opacity: 0.5 }}
                             dropDownContainerStyle={{ borderColor: Colors.bgEnd }}
                             style={{ borderColor: Colors.bgEnd }}
+                            listMode="MODAL"
+                            theme="DARK"
+                            labelProps={{allowFontScaling: false}}
                         />
                     </View>
                 </View>
