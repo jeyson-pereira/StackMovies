@@ -70,7 +70,7 @@ export default Movie = ({ navigation, route }) => {
                             style={[movieStyles.button, movieStyles.trailerBtn]}
                             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                         >
-                            <Ionicons name='film-outline' size={24} style={movieStyles.icon} />
+                            <Ionicons name='film-outline' size={20} style={movieStyles.icon} />
                             <Text allowFontScaling={false} style={movieStyles.btnText}>Ver Trailer</Text>
                         </LinearGradient>
                     </TouchableOpacity>
@@ -81,7 +81,7 @@ export default Movie = ({ navigation, route }) => {
                             style={[movieStyles.button, movieStyles.scheduleBtn]}
                             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                         >
-                            <MaterialCommunityIcons name='calendar-clock' size={24} style={movieStyles.icon} />
+                            <MaterialCommunityIcons name='calendar-clock' size={20} style={movieStyles.icon} />
                             <Text allowFontScaling={false} style={movieStyles.btnText}>Ver Horarios</Text>
                         </LinearGradient>
                     </TouchableOpacity>

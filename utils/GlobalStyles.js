@@ -165,7 +165,7 @@ export const movieStyles = StyleSheet.create({
         color: Colors.text,
         fontFamily: 'SFPro-Bold',
         marginLeft: 4,
-        fontSize: 16,
+        fontSize: 14,
         textShadowColor: 'black',
         textShadowRadius: 10,
         textShadowOffset: { width: 0, height: 2 }
