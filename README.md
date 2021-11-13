@@ -22,4 +22,4 @@ Este proyecto fue realizado con una api propia *(privada)* la cual es necesaria 
 ## Autores ✒️
 
 * **Fabian Franco** - *Back-End* (REST-API) - [Fabian Franco](https://github.com/franco762)
-* **Jeyson Pereira** - *Front-end* (Expo App) - [Jeyson Pereira](https://github.com/jeyson-pereira)
+* **Jeyson Pereira** - *Front-end* (Expo / React Native) - [Jeyson Pereira](https://github.com/jeyson-pereira)
