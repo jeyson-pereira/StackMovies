@@ -8,7 +8,7 @@ Este proyecto fue realizado con una api propia *(privada)* la cual es necesaria 
 
 ## Despliegue 📦
 
-[StackMovies en Google Play Store.](https://play.google.com/store/apps/details?id=com.stackverse.stackmovies) *(Disponible unicamente en Colombia)*
+[StackMovies en Google Play Store.](https://play.google.com/store/apps/details?id=com.stackverse.stackmovies)
 
 ### - Home
 ![Home](https://i.imgur.com/oZTnc0q.png)
